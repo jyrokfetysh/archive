@@ -603,6 +603,45 @@ window.CATALOG = {
           ]
         }
       ]
+    },
+    {
+      id: "waifu-quest",
+      title: "Waifu Quest",
+      cover: "pages/waifu-quest/cover-mvwrf996dkpu.png",
+      author: "KipTeiTei",
+      artist: "KipTeiTei",
+      type: "comic",
+      status: "completed",
+      readingMode: "vertical",
+      chapters: [
+        {
+          number: 1,
+          name: "Ваншот",
+          date: "2026-10-31",
+          pages: [
+            "pages/waifu-quest/1/mvwrf996dkpu-001.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-002.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-003.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-004.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-005.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-006.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-007.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-008.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-009.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-010.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-011.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-012.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-013.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-014.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-015.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-016.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-017.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-018.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-019.png",
+            "pages/waifu-quest/1/mvwrf996dkpu-020.png"
+          ]
+        }
+      ]
     }
   ]
 };
