@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffa07a"/>
+      <stop offset="1" stop-color="#d4472b"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#g)"/>
+  <!-- open book -->
+  <path d="M96 152c52-14 104-8 152 22v214c-48-30-100-36-152-22z" fill="#fff"/>
+  <path d="M416 152c-52-14-104-8-152 22v214c48-30 100-36 152-22z" fill="#fff" opacity=".86"/>
+  <!-- speech bubble -->
+  <path d="M300 92h104a28 28 0 0 1 28 28v52a28 28 0 0 1-28 28h-44l-30 28v-28h-30a28 28 0 0 1-28-28v-52a28 28 0 0 1 28-28z" fill="#ffd166" stroke="#8a2a12" stroke-width="10"/>
+  <circle cx="320" cy="146" r="9" fill="#8a2a12"/><circle cx="352" cy="146" r="9" fill="#8a2a12"/><circle cx="384" cy="146" r="9" fill="#8a2a12"/>
+</svg>

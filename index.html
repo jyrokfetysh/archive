@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>JF Community</title>
+  <meta name="description" content="Fan translations of manga, manhwa and comics. Read online on any device.">
+  <!-- og:start — link previews (Telegram, Discord, …). tools/build.mjs rewrites this block from data/catalog.js. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JF Community">
+  <meta property="og:title" content="JF Community">
+  <meta property="og:description" content="Fan translations of manga, manhwa and comics. Read online on any device.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- og:end -->
+  <meta name="theme-color" content="#1a1311">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="referrer" content="no-referrer">
+  <!-- Adult content (18+): lets search engines and parental filters label the site. -->
+  <meta name="rating" content="adult">
+  <meta name="rating" content="RTA-5042-1996-1400-1577-RTA">
+  <!-- Only the site's own scripts (plus Telegram's Mini App SDK) may run; comic images may come from any https host. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://telegram.org; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
+  <script src="js/boot.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Your series and chapters live here: -->
+  <script src="data/catalog.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar" id="topbar"></header>
+  <main class="container" id="main" tabindex="-1"></main>
+  <nav class="bottomnav" id="bottomnav" aria-label="Main"></nav>
+  <noscript><p style="padding:2rem;text-align:center">Please enable JavaScript to read comics on this site.</p></noscript>
+</body>
+</html>
