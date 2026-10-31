@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "repo": "jyrokfetysh/archive",
+  "branch": "main",
+  "kdf": {
+    "name": "PBKDF2-SHA256",
+    "iterations": 1000000
+  },
+  "keyVersion": 1,
+  "users": [
+    {
+      "name": "JF",
+      "salt": "gDXeOqw+1i+vqTebi8THlA==",
+      "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8rvVlzeGGLrJk9d98/KViEmRq2JJrbnseQ7oZsqSy4U0uUNa6Bedcq9R4/tpzVaTbePI6NuOjLnWlVFFUqA+zg==",
+      "priv": {
+        "iv": "w3pc6v4eQkMObIjO",
+        "data": "btcDTTThHvrigWus1gE6xX0UGRwkZHbZCCteErVniJbLVskWdQg8OHnlqcxvWmIrjxVtp6FStkalUVZRi0Egukcdaiiz/MzOc7UtcazJuVco4yoZb1DhHBd6lieiwddw9TAIO3DpCVDr9cnArHsrEwarK0jPggHAK4nni1aHEGGCnX7LTwuOyOZEJczEba3Y3KzuWS0sYuCR3Q=="
+      },
+      "added": "2026-10-31",
+      "dk": {
+        "epk": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKVX2xt0EZGfEhwZCiay28eIjE6swgUmrWd6YE5l3/jZjWa524XdmFAhL8MuEzmV+P5I38hmViTHETLukSkkWOA==",
+        "salt": "SRey10WQ29kXYv9b69XjzA==",
+        "iv": "sHy0LneHiY3fdl4n",
+        "data": "epu2YXi6tbvBhl74VcMkeUZ9EpybAIDbMOJ7KocGPhJQZ45EmH2UAONr1MJftXT9"
+      }
+    }
+  ],
+  "token": {
+    "iv": "bDGq8Yp/M1dgn5Rb",
+    "data": "xoD3b7TzN5EWkj40EUVAPJTM7cymS6+46DRNTTaUB+eoSmk3Ez8FYqz1xFaEIg+MvrfxDNBLbvRTxjT5jhzw+Tz2+ZJRBKun9YhVusdXVRumYoJpgFYkhIBRR7nUT/w6BQs/aClQ4m1zBXQNgg=="
+  }
+}
