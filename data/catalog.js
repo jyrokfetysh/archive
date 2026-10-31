@@ -607,7 +607,6 @@ window.CATALOG = {
     {
       id: "waifu-quest",
       title: "Waifu Quest",
-      cover: "pages/waifu-quest/cover-mvwrf996dkpu.png",
       author: "KipTeiTei",
       artist: "KipTeiTei",
       type: "comic",
@@ -620,7 +619,6 @@ window.CATALOG = {
           date: "2026-10-31",
           pages: [
             "pages/waifu-quest/1/mvwrf996dkpu-001.png",
-            "pages/waifu-quest/1/mvwrf996dkpu-002.png",
             "pages/waifu-quest/1/mvwrf996dkpu-003.png",
             "pages/waifu-quest/1/mvwrf996dkpu-004.png",
             "pages/waifu-quest/1/mvwrf996dkpu-005.png",
