@@ -639,7 +639,8 @@ window.CATALOG = {
             "pages/waifu-quest/1/mvwrf996dkpu-020.png"
           ]
         }
-      ]
+      ],
+      cover: "pages/waifu-quest/cover-mvwvv95d199m.jpg"
     }
   ]
 };
