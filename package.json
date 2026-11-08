@@ -1,0 +1,11 @@
+{
+  "name": "jf-community",
+  "private": true,
+  "type": "module",
+  "description": "Comic reader website. No dependencies; the build only adds share pages with link previews.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "serve": "python -m http.server 8765"
+  },
+  "engines": { "node": ">=18" }
+}

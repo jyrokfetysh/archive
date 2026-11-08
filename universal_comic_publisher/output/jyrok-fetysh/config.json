@@ -1,0 +1,42 @@
+{
+  "root": "C:\\Users\\User\\OneDrive\\Изображения\\something\\stuff\\ayako(FellsX)",
+  "structure_mode": "sections",
+  "section_word": "Частина",
+  "comic_title": "Дієта Аяко",
+  "section_title_template": "{comic_title} | {section_word_cap}: {section_number}",
+  "include_toc": true,
+  "toc_title": "{comic_title} | Зміст",
+  "telegraph_access_token": "30e0dc5b69aecd2703f2b1a9a6e03822bd03131f2f7a2f5fcbe5aad0f790",
+  "telegraph_short_name": "jyrok_fetysh",
+  "author_name": "SpellsX",
+  "author_url": "https://yorunoecchi.com/collections/spellsx?srsltid=AYCX9vLU-EliFfSzePaTVs8qRYqfttZ4S-OOQ3jUiqLY-nnuf7jMO_T-",
+  "footer_channel_name": "jyrok_fetysh | Фідеризм Українською | Feederism UA",
+  "footer_channel_url": "http://t.me/jyrok_fetysh",
+  "footer_chat_name": "jyrok_fetysh Бесіда",
+  "footer_chat_url": "https://t.me/+CtBEieWDzYdhMGVi",
+  "cover_patterns": [
+    "wgc{section_number}_0",
+    "wgc{section_number}-0"
+  ],
+  "image_extensions": [
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".gif",
+    ".bmp",
+    ".tif",
+    ".tiff",
+    ".avif"
+  ],
+  "sort_mode": "natural",
+  "sort_regex": "(\\d+)",
+  "async_workers": 4,
+  "batch_max_mb": 150,
+  "timeout_sec": 60,
+  "upload_retries": 3,
+  "upload_backoff": 1.5,
+  "telegraph_retries": 8,
+  "telegraph_backoff": 2.0,
+  "output_dir": "C:\\Users\\User\\PyCharmMiscProject\\universal_comic_publisher\\output\\jyrok-fetysh"
+}
