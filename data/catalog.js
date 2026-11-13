@@ -538,6 +538,18 @@ window.CATALOG = {
             "dasuh1.png",
             "6sb9oa.png"
           ]
+        },
+        {
+          number: 45,
+          title: "Спокуса",
+          date: "2026-11-14",
+          pages: [
+            "pages/klub-naboru-vahy/45/mwflsvsu1xmi-001.png",
+            "pages/klub-naboru-vahy/45/mwflsvsu1xmi-002.png",
+            "pages/klub-naboru-vahy/45/mwflsvsu1xmi-003.png",
+            "pages/klub-naboru-vahy/45/mwflsvsu1xmi-004.png",
+            "pages/klub-naboru-vahy/45/mwflsvsu1xmi-005.png"
+          ]
         }
       ]
     },
