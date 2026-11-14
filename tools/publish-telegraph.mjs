@@ -8,9 +8,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalogPath = path.join(root, 'data/catalog.js');
 const telegraPhApi = 'https://api.telegra.ph';
 
-const labelOf = (chapter, index, language) => chapter.name
-  || chapter.title
-  || `${language === 'uk' ? 'Епізод' : 'Episode'} ${chapter.number ?? index + 1}`;
+const labelOf = (chapter, index, language) => {
+  const episode = chapter.name
+    || `${language === 'uk' ? 'Епізод' : 'Episode'} ${chapter.number ?? index + 1}`;
+  return chapter.title ? `${episode} - ${chapter.title}` : episode;
+};
 
 export function siteBase(site, env = process.env) {
   const configured = env.SITE_URL || site?.url;

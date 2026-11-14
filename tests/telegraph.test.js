@@ -70,6 +70,28 @@ test('plans episodes for series without telegraphManaged set', () => {
   assert.equal(plans[1].title, 'Unmanaged series — Contents');
 });
 
+test('includes the episode number with its title in Telegraph page and contents labels', () => {
+  const catalog = {
+    site: { language: 'uk' },
+    series: [{
+      title: 'Клуб Набору Ваги',
+      type: 'comic',
+      chapters: [{
+        number: 45,
+        title: 'Спокуса',
+        telegraphUrl: 'https://telegra.ph/episode-45',
+        pages: ['episode-45.jpg'],
+      }],
+    }],
+  };
+  const [chapter, contents] = telegraphPlan(catalog, 'https://reader.example/');
+  assert.equal(chapter.title, 'Клуб Набору Ваги — Епізод 45 - Спокуса');
+
+  const nodes = contents.content();
+  assert.deepEqual(nodes[1].children[0].children[0].children, ['Епізод 45 - Спокуса']);
+  assert.equal(nodes[1].children[0].attrs.href, 'https://telegra.ph/episode-45');
+});
+
 test('reuses old Telegraph links as managed page URLs and removes duplicate links', () => {
   const legacyUrl = 'https://telegra.ph/series-contents';
   const catalog = {
