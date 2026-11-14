@@ -57,7 +57,8 @@ window.CATALOG = {
     ],
     url: "",
     image: "",
-    telegramApp: ""
+    telegramApp: "",
+    telegraphRefreshAt: "2026-11-14T16:28:59.446Z"
   },
   series: [
     {
