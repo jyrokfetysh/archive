@@ -541,7 +541,7 @@ window.CATALOG = {
         },
         {
           number: 45,
-          title: "Спокус",
+          title: "Спокуса",
           date: "2026-11-14",
           pages: [
             "pages/klub-naboru-vahy/45/mwflsvsu1xmi-001.png",
