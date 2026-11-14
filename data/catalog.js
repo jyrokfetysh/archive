@@ -651,7 +651,8 @@ window.CATALOG = {
             "amapv7.png",
             "696yaq.png",
             "msbprp.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Nadzvichajno-Pryamolіnіjnі-Hlopec-Ta-Dіvchina-11-14"
         }
       ]
     },
