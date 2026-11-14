@@ -118,7 +118,10 @@ export function telegraphPlan(catalog, base) {
   return plans;
 }
 
-async function savePage(token, plan) {
+export async function savePage(token, plan, {
+  fetchImpl = fetch,
+  sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)),
+} = {}) {
   const path = pagePath(plan.url);
   const endpoint = path
     ? `${telegraPhApi}/editPage/${encodeURIComponent(path)}`
@@ -130,17 +133,26 @@ async function savePage(token, plan) {
     content: JSON.stringify(content),
     return_content: 'false',
   });
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body,
-    signal: AbortSignal.timeout(30_000),
-  });
-  const result = await response.json().catch(() => null);
-  if (!response.ok || !result?.ok || !result.result?.url) {
-    throw new Error(`Telegraph ${path ? 'editPage' : 'createPage'} failed: ${result?.error || response.statusText}`);
+  while (true) {
+    const response = await fetchImpl(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+      signal: AbortSignal.timeout(30_000),
+    });
+    const result = await response.json().catch(() => null);
+    if (response.ok && result?.ok && result.result?.url) return result.result.url;
+
+    const error = result?.error || response.statusText;
+    const floodWait = /^FLOOD_WAIT_(\d+)$/.exec(error);
+    if (!floodWait) {
+      throw new Error(`Telegraph ${path ? 'editPage' : 'createPage'} failed: ${error}`);
+    }
+
+    const waitSeconds = Number(floodWait[1]);
+    console.log(`Telegraph rate limit reached; retrying "${plan.title}" in ${waitSeconds} seconds.`);
+    await sleep(waitSeconds * 1000);
   }
-  return result.result.url;
 }
 
 async function main() {
@@ -158,14 +170,17 @@ async function main() {
   }
 
   const plans = telegraphPlan(catalog, siteBase(catalog.site));
+  let lastSavedCatalog = originalCatalog;
   for (const plan of plans) {
     const url = await savePage(token, plan);
     plan.saveUrl(url);
     console.log(`Published "${plan.title}" to ${url}`);
-  }
 
-  if (JSON.stringify(catalog) !== originalCatalog) {
-    fs.writeFileSync(catalogPath, serializeCatalog(catalog, header));
+    const currentCatalog = JSON.stringify(catalog);
+    if (currentCatalog !== lastSavedCatalog) {
+      fs.writeFileSync(catalogPath, serializeCatalog(catalog, header));
+      lastSavedCatalog = currentCatalog;
+    }
   }
 }
 

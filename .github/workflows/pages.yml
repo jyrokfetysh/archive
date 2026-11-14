@@ -37,6 +37,7 @@ jobs:
           SITE_URL: ${{ vars.SITE_URL }}
         run: node tools/publish-telegraph.mjs
       - name: Save Telegraph page URLs
+        if: always()
         run: |
           if git diff --quiet -- data/catalog.js; then
             echo "No new Telegraph URLs to save."
@@ -48,6 +49,7 @@ jobs:
             git push
           fi
       - id: result
+        if: always()
         run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   deploy:

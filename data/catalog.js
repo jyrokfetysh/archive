@@ -103,6 +103,7 @@ window.CATALOG = {
       chapters: [
         {
           number: 1,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-1-11-14",
           date: "2026-10-27",
           pages: [
             "r3zqd9.png",
@@ -112,6 +113,7 @@ window.CATALOG = {
         },
         {
           number: 2,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-2-11-14",
           date: "2026-10-27",
           pages: [
             "jthtmx.png",
@@ -123,6 +125,7 @@ window.CATALOG = {
         },
         {
           number: 3,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-3-11-14",
           date: "2026-10-27",
           pages: [
             "blbrtd.png",
@@ -133,6 +136,7 @@ window.CATALOG = {
         },
         {
           number: 4,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-4-11-14",
           date: "2026-10-27",
           pages: [
             "38ye47.png",
@@ -142,6 +146,7 @@ window.CATALOG = {
         },
         {
           number: 5,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-5-11-14",
           date: "2026-10-27",
           pages: [
             "m0he1h.png",
@@ -152,6 +157,7 @@ window.CATALOG = {
         },
         {
           number: 6,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-6-11-14",
           date: "2026-10-27",
           pages: [
             "2tsabf.png",
@@ -162,6 +168,7 @@ window.CATALOG = {
         },
         {
           number: 7,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-7-11-14",
           date: "2026-10-27",
           pages: [
             "v14eh1.png",
@@ -171,6 +178,7 @@ window.CATALOG = {
         },
         {
           number: 8,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-8-11-14",
           date: "2026-10-27",
           pages: [
             "jwes8m.png",
@@ -181,6 +189,7 @@ window.CATALOG = {
         },
         {
           number: 9,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-9-11-14",
           date: "2026-10-27",
           pages: [
             "l8g1kt.png",
@@ -190,6 +199,7 @@ window.CATALOG = {
         },
         {
           number: 10,
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-10-11-14",
           date: "2026-10-27",
           pages: [
             "hqfxap.png",

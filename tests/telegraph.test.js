@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { parseCatalogSource } from '../js/admin/catalog-io.js';
-import { resolveImageUrl, siteBase, telegraphPlan } from '../tools/publish-telegraph.mjs';
+import { resolveImageUrl, savePage, siteBase, telegraphPlan } from '../tools/publish-telegraph.mjs';
 
 test('resolves repository image paths and Catbox IDs to absolute URLs', () => {
   const base = 'https://reader.example/archive/';
@@ -101,4 +101,46 @@ test('creates chapter pages before a contents page and stores returned URLs', ()
   contents.saveUrl('https://telegra.ph/contents');
   assert.equal(catalog.series[0].telegraphUrl, 'https://telegra.ph/contents');
   assert.equal(catalog.series[0].chapters[0].telegraphUrl, 'https://telegra.ph/episode');
+});
+
+test('waits for Telegraph FLOOD_WAIT and retries the same page request', async () => {
+  const waits = [];
+  const requests = [];
+  const responses = [
+    { ok: true, json: async () => ({ ok: false, error: 'FLOOD_WAIT_9' }) },
+    { ok: true, json: async () => ({ ok: true, result: { url: 'https://telegra.ph/episode' } }) },
+  ];
+  const url = await savePage('token', {
+    title: 'Episode 1',
+    url: '',
+    content: [{ tag: 'img', attrs: { src: 'https://example.com/page.png' } }],
+  }, {
+    fetchImpl: async (...args) => {
+      requests.push(args);
+      return responses.shift();
+    },
+    sleep: async (milliseconds) => waits.push(milliseconds),
+  });
+
+  assert.equal(url, 'https://telegra.ph/episode');
+  assert.deepEqual(waits, [9000]);
+  assert.equal(requests.length, 2);
+  assert.equal(requests[0][0], 'https://api.telegra.ph/createPage');
+  assert.equal(requests[1][0], requests[0][0]);
+});
+
+test('does not retry non-rate-limit Telegraph API errors', async () => {
+  let requests = 0;
+  await assert.rejects(savePage('token', {
+    title: 'Episode 1',
+    url: '',
+    content: [],
+  }, {
+    fetchImpl: async () => {
+      requests += 1;
+      return { ok: true, json: async () => ({ ok: false, error: 'ACCESS_TOKEN_INVALID' }) };
+    },
+    sleep: async () => assert.fail('Unexpected retry'),
+  }), /createPage failed: ACCESS_TOKEN_INVALID/);
+  assert.equal(requests, 1);
 });
