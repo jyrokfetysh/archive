@@ -40,13 +40,49 @@ test('publishes a one-shot as one image-only page without a contents page', () =
   assert.equal(plan.title, 'One-shot');
 });
 
-test('plans the existing managed one-shot page from the repository catalogue', () => {
+test('plans every catalogue series, including one-shots, regardless of management flags', () => {
   const { catalog } = parseCatalogSource(fs.readFileSync(new URL('../data/catalog.js', import.meta.url), 'utf8'));
   const plans = telegraphPlan(catalog, 'https://reader.example/archive/');
-  assert.equal(plans.length, 1);
-  assert.equal(plans[0].url, 'https://telegra.ph/Waifu-Quest--Vanshot-11-08');
-  assert.equal(plans[0].content.length, 19);
-  assert.ok(plans[0].content.every((node) => node.tag === 'img'));
+  const expectedPlans = catalog.series.reduce((count, series) => {
+    if (!series.chapters?.length) return count;
+    return count + (series.type === 'oneshot' ? 1 : series.chapters.length + 1);
+  }, 0);
+  assert.equal(plans.length, expectedPlans);
+  const oneShot = plans.find((plan) => plan.url === 'https://telegra.ph/Waifu-Quest--Vanshot-11-08');
+  assert.ok(oneShot);
+  assert.equal(oneShot.content.length, 19);
+  assert.ok(oneShot.content.every((node) => node.tag === 'img'));
+  assert.ok(plans.some((plan) => plan.title.startsWith('Клуб Набору Ваги —')));
+  assert.equal(catalog.series.find((series) => series.id === 'waifu-quest').telegraphUrl, undefined);
+});
+
+test('plans episodes for series without telegraphManaged set', () => {
+  const catalog = {
+    series: [{
+      title: 'Unmanaged series',
+      type: 'manga',
+      chapters: [{ number: 1, pages: ['episode-1.jpg'] }],
+    }],
+  };
+  const plans = telegraphPlan(catalog, 'https://reader.example/');
+  assert.equal(plans.length, 2);
+  assert.equal(plans[0].title, 'Unmanaged series — Episode 1');
+  assert.equal(plans[1].title, 'Unmanaged series — Contents');
+});
+
+test('reuses old Telegraph links as managed page URLs and removes duplicate links', () => {
+  const legacyUrl = 'https://telegra.ph/series-contents';
+  const catalog = {
+    series: [{
+      title: 'Legacy series',
+      type: 'manga',
+      links: [{ label: 'Telegraph', url: legacyUrl }, { label: 'Source', url: 'https://example.com' }],
+      chapters: [{ number: 1, pages: ['episode-1.jpg'] }],
+    }],
+  };
+  const plans = telegraphPlan(catalog, 'https://reader.example/');
+  assert.equal(plans[1].url, legacyUrl);
+  assert.deepEqual(catalog.series[0].links, [{ label: 'Source', url: 'https://example.com' }]);
 });
 
 test('creates chapter pages before a contents page and stores returned URLs', () => {

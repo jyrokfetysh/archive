@@ -47,9 +47,11 @@ Open **`https://<your-site>/admin.html`** (it isn't linked from the public site)
 - **Publish:** first shows exactly what will change (deletions in red), then sends everything to GitHub in
   **one commit**; the site updates about a minute later. Unpublished edits survive a page reload as a draft.
 - **Telegram post:** the ✈ button next to each episode gives you a ready-to-paste announcement with the episode link.
-- **Telegraph:** series marked with `telegraphManaged: true` are published automatically after catalogue or page changes.
+- **Telegraph:** every series with episodes is published automatically after catalogue or page changes.
   Add the Telegraph access token as the repository Actions secret `TELEGRAPH_ACCESS_TOKEN`; set the Actions variable
   `SITE_URL` if the site uses a custom domain. One-shots are published as a single page without a contents section.
+  Use **Refresh Telegraph** in the admin header to republish all series; Telegraph links appear on the public series
+  and episode pages and in their admin views after the workflow completes.
 - **Site settings:** name, description, language, links, Telegram settings.
 - **Admins:** add co-translators (each gets their own name and password), remove access, change your password or replace the GitHub token.
 
@@ -146,7 +148,7 @@ python -m http.server 8766 -d _site
 3. Every push to `main`, including publishing from the admin page, runs `.github/workflows/pages.yml`. That
    builds the site with its share pages and deploys it to `https://<user>.github.io/<repo>/`. For Telegraph
    publishing, add `TELEGRAPH_ACCESS_TOKEN` under **Settings → Secrets and variables → Actions → New repository secret**.
-   The workflow updates managed Telegraph pages and saves any newly created page URLs back to the catalogue.
+   The workflow updates all Telegraph pages and saves any newly created page URLs back to the catalogue.
 
 Netlify and Cloudflare Pages work too: set the build command to `node tools/build.mjs`, set the publish directory to `_site`,
 and set `site.url` (or a `SITE_URL` environment variable) to the site's address.

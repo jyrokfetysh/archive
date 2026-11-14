@@ -13,6 +13,9 @@ export default function seriesView({ root, params: [sid] }) {
   }
   document.title = `${s.title} — ${document.title}`;
   let filter = '';
+  const telegraphUrl = s.type === 'oneshot'
+    ? s.chapters.find((chapter) => chapter.telegraphUrl)?.telegraphUrl
+    : s.telegraphUrl;
 
   const people = [
     s.author && [t('series.author'), s.author],
@@ -61,6 +64,9 @@ export default function seriesView({ root, params: [sid] }) {
       </div>
     </div>
     <div class="series-actions" data-actions>${actionButtons()}</div>
+    ${telegraphUrl ? html`<div class="series-links">
+      <a class="btn btn-ghost btn-sm" href="${telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('series.telegraph')}</span></a>
+    </div>` : ''}
     ${s.tags.length ? html`<div class="chips">${s.tags.map((tag) => html`<a class="chip" href="#/catalog?tags=${encodeURIComponent(tag)}">${tag}</a>`)}</div>` : ''}
     ${s.description ? html`<div class="desc-wrap">
       <p class="desc is-clamped" data-desc>${s.description}</p>
@@ -107,6 +113,7 @@ export default function seriesView({ root, params: [sid] }) {
             ${pr ? html`<span class="ch-progress">${t('series.inProgress', { p: pr.page + 1, n: pr.total })}</span>` : ''}
           </span>
         </a>
+        ${c.telegraphUrl ? html`<a class="btn btn-ghost btn-sm" href="${c.telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('series.telegraph')}</span></a>` : ''}
         ${isNew(c) && !read ? html`<span class="badge badge-new">${t('new')}</span>` : ''}
         <button class="ch-check" type="button" data-toggle="${c.id}" aria-pressed="${read}" aria-label="${t('series.toggleRead')}" title="${t('series.toggleRead')}">${icon('check')}</button>
       </li>`;

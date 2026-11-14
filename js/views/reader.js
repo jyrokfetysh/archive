@@ -196,6 +196,7 @@ export default function reader({ root, params: [sid, cid], query }) {
         : html`<h2>${t('r.caughtUp')}</h2>${!store.isFav(s.id) ? html`<p>${t('r.caughtUpText')}</p>
           <button class="btn" type="button" data-act="fav">${icon('heart')}<span>${t('fav.add')}</span></button>` : ''}`}
       <a class="btn btn-ghost" href="${seriesHref(s)}">${icon('list')}<span>${t('r.toSeries')}</span></a>
+      ${ch.telegraphUrl ? html`<a class="btn btn-ghost" href="${ch.telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('series.telegraph')}</span></a>` : ''}
       <button class="btn btn-ghost btn-sm" type="button" data-act="share">${icon('share')}<span>${t('share.chapter')}</span></button>
     </div>`;
 

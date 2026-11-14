@@ -419,11 +419,13 @@ async function startApp() {
         <a href="#/admins" data-nav="admins">${icon('bookmark')}<span>${t('a.admins')}</span></a>
       </nav>
       <div class="adm-actions">
+        <button class="btn btn-ghost btn-sm" type="button" data-telegraph-refresh title="${t('a.telegraphRefresh')}">${icon('refresh')}<span>${t('a.telegraphRefresh')}</span></button>
         <button class="btn btn-primary" type="button" data-publish>${icon('upload')}<span>${t('a.publish')}</span><b class="adm-count" data-count hidden></b></button>
         <button class="btn-icon" type="button" data-logout title="${t('a.logout')}" aria-label="${t('a.logout')}">${icon('x')}</button>
       </div>
     </header>
     <main class="container adm-main" id="adm-view"></main>`);
+  $('[data-telegraph-refresh]').addEventListener('click', refreshTelegraph);
   $('[data-publish]').addEventListener('click', () => openPublish());
   // Signing out mid-upload would leave the publish running without a session.
   $('[data-logout]').addEventListener('click', () => (S.publishing ? toast(t('a.publishing')) : logout()));
@@ -570,7 +572,7 @@ function diffLine(x) {
   const title = x.series?.title || x.series?.id || '?';
   const fields = x.fields?.join(', ');
   switch (x.type) {
-    case 'site': return t('a.dSite', { fields });
+    case 'site': return x.fields?.includes('telegraphRefreshAt') ? t('a.telegraphRefreshRequested') : t('a.dSite', { fields });
     case 'seriesAdd': return t('a.dSeriesAdd', { title, n: x.n });
     case 'seriesEdit': return t('a.dSeriesEdit', { title, fields });
     case 'seriesDel': return t('a.dSeriesDel', { title, n: x.n });
@@ -660,6 +662,9 @@ function viewSeries(id) {
   if (!isNew && !s) return go('#/');
   const { root, signal } = newView();
   const v = s || { status: 'ongoing', type: 'comic', readingMode: 'vertical', chapters: [] };
+  const telegraphUrl = v.type === 'oneshot'
+    ? v.chapters.find((chapter) => chapter.telegraphUrl)?.telegraphUrl
+    : v.telegraphUrl;
   let cover = v.cover || '';
   S.unsaved = () => cover !== (v.cover || '');
   const allTags = [...new Set([...S.catalog.series.flatMap((x) => x.tags || []), ...SUGGESTED_TAGS])].sort((a, b) => a.localeCompare(b));
@@ -668,7 +673,12 @@ function viewSeries(id) {
   root.innerHTML = String(html`
     <div class="page-head">
       <div><a class="link" href="#/">${icon('arrowLeft')} ${t('a.series')}</a><h1>${isNew ? t('a.newSeries') : v.title}</h1></div>
-      ${!isNew ? html`<a class="btn btn-ghost btn-sm" href="./#/series/${encodeURIComponent(sid(v))}" target="_blank" rel="noopener">${icon('external')}<span>${t('a.view')}</span></a>` : ''}
+      ${!isNew ? html`<div class="adm-actions">
+        <a class="btn btn-ghost btn-sm" href="./#/series/${encodeURIComponent(sid(v))}" target="_blank" rel="noopener">${icon('external')}<span>${t('a.view')}</span></a>
+        ${telegraphUrl
+          ? html`<a class="btn btn-ghost btn-sm" href="${telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('a.telegraphLabel')}</span></a>`
+          : html`<span class="badge badge-soft">${t('a.telegraphPending')}</span>`}
+      </div>` : ''}
     </div>
     <form class="adm-grid" data-form novalidate>
       <section class="panel">
@@ -820,6 +830,9 @@ function renderChapterList(root, s, signal) {
         <span class="adm-row-main"><b>${chLabel(c)}${c.title ? ` — ${c.title}` : ''}</b>
           <small>${c.date || '—'} · ${t('pages', { n: c.pages?.length || 0 })}${(c.pages || []).some(isPending) ? ` · ${t('a.unpublished')}` : ''}</small></span>
       </a>
+      ${c.telegraphUrl
+        ? html`<a class="btn-icon" href="${c.telegraphUrl}" target="_blank" rel="noopener" title="${t('a.telegraphOpen')}" aria-label="${t('a.telegraphOpen')}">${icon('external')}</a>`
+        : html`<span class="badge badge-soft" title="${t('a.telegraphPending')}">Telegraph</span>`}
       <button class="btn-icon" type="button" data-post="${chId(c)}" title="${t('b.tgTitle')}" aria-label="${t('b.tgTitle')}">${icon('telegram')}</button>
     </div>`)}` : html`<p class="muted">${t('noChapters')}</p>`);
   el.addEventListener('click', (e) => {
@@ -912,7 +925,11 @@ function viewChapter(seriesId, cid) {
   root.innerHTML = String(html`
     <div class="page-head">
       <div><a class="link" href="#/series/${encodeURIComponent(seriesId)}">${icon('arrowLeft')} ${s.title}</a>
-        <h1>${isNew ? t('a.addChapter') : chLabel(v)}</h1></div>
+        <h1>${isNew ? t('a.addChapter') : chLabel(v)}</h1>
+        ${!isNew && v.telegraphUrl
+          ? html`<a class="btn btn-ghost btn-sm" href="${v.telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('a.telegraphLabel')}</span></a>`
+          : !isNew ? html`<span class="badge badge-soft">${t('a.telegraphPending')}</span>` : ''}
+      </div>
     </div>
     <form class="adm-form-wide" data-form novalidate>
       <section class="panel">
@@ -1524,6 +1541,16 @@ function openPublish(notice) {
       gh.onWait = null;
     }
   });
+}
+
+function refreshTelegraph() {
+  if (S.publishing) return toast(t('a.publishing'));
+  if (isDirty()) return toast(t('a.saveBeforeRefresh'));
+  const site = (S.catalog.site ||= {});
+  const previous = Date.parse(site.telegraphRefreshAt || '') || 0;
+  site.telegraphRefreshAt = new Date(Math.max(Date.now(), previous + 1)).toISOString();
+  changed(t('a.telegraphRefreshRequested'));
+  openPublish();
 }
 
 function publishedNotice() {

@@ -24,7 +24,7 @@ export function siteBase(site, env = process.env) {
 
 export function resolveImageUrl(value, base) {
   const image = String(value || '').trim();
-  if (!image) throw new Error('A managed Telegraph episode contains an empty page URL.');
+  if (!image) throw new Error('A Telegraph episode contains an empty page URL.');
   if (/^https?:\/\//i.test(image)) return image;
   if (image.startsWith('//')) return `https:${image}`;
   if (/^(files\.)?catbox\.moe\//i.test(image)) return `https://${image}`;
@@ -36,9 +36,20 @@ export function resolveImageUrl(value, base) {
 function imageNodes(chapters, base) {
   return chapters.flatMap((chapter) => {
     const pages = Array.isArray(chapter.pages) ? chapter.pages : [];
-    if (!pages.length) throw new Error('A managed Telegraph episode has no pages.');
+    if (!pages.length) throw new Error('A Telegraph episode has no pages.');
     return pages.map((page) => ({ tag: 'img', attrs: { src: resolveImageUrl(page, base) } }));
   });
+}
+
+function legacyTelegraphUrl(series) {
+  return (Array.isArray(series.links) ? series.links : [])
+    .find((link) => /^https:\/\/telegra\.ph\//i.test(link?.url || '') && /telegraph/i.test(link.label || ''))?.url || '';
+}
+
+function removeLegacyTelegraphLinks(series) {
+  if (!Array.isArray(series.links)) return;
+  series.links = series.links.filter((link) => !(/^https:\/\/telegra\.ph\//i.test(link?.url || '') && /telegraph/i.test(link.label || '')));
+  if (!series.links.length) delete series.links;
 }
 
 function pagePath(url) {
@@ -54,23 +65,27 @@ function pagePath(url) {
 export function telegraphPlan(catalog, base) {
   const plans = [];
   for (const series of catalog.series || []) {
-    if (series.telegraphManaged !== true) continue;
     const chapters = Array.isArray(series.chapters) ? series.chapters : [];
     const language = catalog.site?.language;
-    if (!chapters.length) throw new Error(`Managed series "${series.title}" has no episodes.`);
+    if (!chapters.length) continue;
 
     if (series.type === 'oneshot') {
       const chapterWithUrl = chapters.find((chapter) => chapter.telegraphUrl);
       const target = chapterWithUrl || chapters[0];
+      const url = target.telegraphUrl || series.telegraphUrl || legacyTelegraphUrl(series);
+      delete series.telegraphUrl;
+      removeLegacyTelegraphLinks(series);
       plans.push({
         title: series.title,
-        url: target.telegraphUrl || '',
+        url,
         content: imageNodes(chapters, base),
         saveUrl: (url) => { target.telegraphUrl = url; },
       });
       continue;
     }
 
+    series.telegraphUrl ||= legacyTelegraphUrl(series);
+    removeLegacyTelegraphLinks(series);
     const chapterUrls = [];
     chapters.forEach((chapter, index) => {
       const label = labelOf(chapter, index, language);
@@ -132,15 +147,14 @@ async function main() {
   const source = fs.readFileSync(catalogPath, 'utf8');
   const { header, catalog } = parseCatalogSource(source);
   const originalCatalog = JSON.stringify(catalog);
-  if (!(catalog.series || []).some((series) => series.telegraphManaged === true)) {
-    console.log('No Telegraph-managed series in the catalogue.');
+  if (!(catalog.series || []).some((series) => Array.isArray(series.chapters) && series.chapters.length)) {
+    console.log('No series with episodes in the catalogue.');
     return;
   }
 
   const token = process.env.TELEGRAPH_ACCESS_TOKEN?.trim();
   if (!token) {
-    console.warn('Telegraph publishing skipped: configure the TELEGRAPH_ACCESS_TOKEN repository secret.');
-    return;
+    throw new Error('Telegraph publishing requires the TELEGRAPH_ACCESS_TOKEN repository secret.');
   }
 
   const plans = telegraphPlan(catalog, siteBase(catalog.site));
