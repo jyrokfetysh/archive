@@ -92,10 +92,6 @@ window.CATALOG = {
       added: "2026-10-27",
       links: [
         {
-          label: "Telegraph",
-          url: "https://telegra.ph/Klub-Naboru-Vagi--Zm%D1%96st-10-27-2"
-        },
-        {
           label: "Telegram-канал",
           url: "https://t.me/jyrok_fetysh"
         }
@@ -215,7 +211,8 @@ window.CATALOG = {
             "n3g8wa.png",
             "5keql8.png",
             "m874y3.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-11-11-14"
         },
         {
           number: 12,
@@ -224,7 +221,8 @@ window.CATALOG = {
             "lgn07g.png",
             "20kc9e.png",
             "a30wcv.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-12-11-14"
         },
         {
           number: 13,
@@ -233,7 +231,8 @@ window.CATALOG = {
             "xtt4x6.png",
             "lq38za.png",
             "ivjv75.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-13-11-14"
         },
         {
           number: 14,
@@ -243,7 +242,8 @@ window.CATALOG = {
             "6vt3pz.png",
             "cppniu.png",
             "p3d480.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-14-11-14"
         },
         {
           number: 15,
@@ -252,7 +252,8 @@ window.CATALOG = {
             "jyszp8.png",
             "4tmsyp.png",
             "yjs5b9.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-15-11-14"
         },
         {
           number: 16,
@@ -262,7 +263,8 @@ window.CATALOG = {
             "2j6cmn.png",
             "alq77m.png",
             "hxjp20.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-16-11-14"
         },
         {
           number: 17,
@@ -272,7 +274,8 @@ window.CATALOG = {
             "iq7i45.png",
             "y4f5p1.png",
             "nr76hv.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-17-11-14"
         },
         {
           number: 18,
@@ -282,7 +285,8 @@ window.CATALOG = {
             "9j6h0p.png",
             "wyza7s.png",
             "g98467.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-18-11-14"
         },
         {
           number: 19,
@@ -291,7 +295,8 @@ window.CATALOG = {
             "kvsrnf.png",
             "b2wdaz.png",
             "mdob5g.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-19-11-14"
         },
         {
           number: 20,
@@ -300,7 +305,8 @@ window.CATALOG = {
             "kbdp6s.png",
             "0w8tgb.png",
             "nlep35.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-20-11-14"
         },
         {
           number: 21,
@@ -308,7 +314,8 @@ window.CATALOG = {
           pages: [
             "uiqk02.png",
             "o865ax.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-21-11-14"
         },
         {
           number: 22,
@@ -318,7 +325,8 @@ window.CATALOG = {
             "in6gmt.png",
             "y958r2.png",
             "pegcua.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-22-11-14"
         },
         {
           number: 23,
@@ -327,7 +335,8 @@ window.CATALOG = {
             "fmsbm7.png",
             "gr6vns.png",
             "glqoq2.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-23-11-14"
         },
         {
           number: 24,
@@ -337,7 +346,8 @@ window.CATALOG = {
             "fl6xui.png",
             "d5gpyq.png",
             "nyc93f.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-24-11-14"
         },
         {
           number: 25,
@@ -346,7 +356,8 @@ window.CATALOG = {
             "utmt6w.png",
             "etio5c.png",
             "q2b8u5.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-25-11-14"
         },
         {
           number: 26,
@@ -356,7 +367,8 @@ window.CATALOG = {
             "lja5ix.png",
             "dv96x2.png",
             "3lq8l9.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-26-11-14"
         },
         {
           number: 27,
@@ -366,7 +378,8 @@ window.CATALOG = {
             "3jpt3v.png",
             "72hvj0.png",
             "3eklew.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-27-11-14"
         },
         {
           number: 28,
@@ -377,7 +390,8 @@ window.CATALOG = {
             "03k2x4.png",
             "ksj54e.png",
             "q927t1.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-28-11-14"
         },
         {
           number: 29,
@@ -387,7 +401,8 @@ window.CATALOG = {
             "ncn3m2.png",
             "g6ptk7.png",
             "xon7f8.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-29-11-14"
         },
         {
           number: 30,
@@ -399,7 +414,8 @@ window.CATALOG = {
             "tdgrbh.png",
             "oxgzm1.png",
             "8o50ij.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-30-11-14"
         },
         {
           number: 31,
@@ -410,7 +426,8 @@ window.CATALOG = {
             "cslqcx.png",
             "tebdg3.png",
             "4d6vr0.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-31-11-14"
         },
         {
           number: 32,
@@ -421,7 +438,8 @@ window.CATALOG = {
             "ajvaun.png",
             "gsaqt0.png",
             "fesqti.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-32-11-14"
         },
         {
           number: 33,
@@ -431,7 +449,8 @@ window.CATALOG = {
             "nm3jpv.png",
             "h3clqw.png",
             "uafll6.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-33-11-14"
         },
         {
           number: 34,
@@ -441,7 +460,8 @@ window.CATALOG = {
             "v10z0t.png",
             "tkc4vo.png",
             "w77sap.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-34-11-14"
         },
         {
           number: 35,
@@ -451,7 +471,8 @@ window.CATALOG = {
             "6t8oi0.png",
             "0gm6u7.png",
             "4sbyq8.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-35-11-14"
         },
         {
           number: 36,
@@ -461,7 +482,8 @@ window.CATALOG = {
             "0r31uy.png",
             "qhgdrf.png",
             "nth6k8.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-36-11-14"
         },
         {
           number: 37,
@@ -472,7 +494,8 @@ window.CATALOG = {
             "c85qrz.png",
             "ttj123.png",
             "btho6r.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-37-11-14"
         },
         {
           number: 38,
@@ -483,7 +506,8 @@ window.CATALOG = {
             "w1ml6i.png",
             "3btys6.png",
             "uvrn7t.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-38-11-14"
         },
         {
           number: 39,
@@ -495,7 +519,8 @@ window.CATALOG = {
             "sqo2uf.png",
             "wiga2x.png",
             "axv0o5.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-39-11-14"
         },
         {
           number: 40,
@@ -505,7 +530,8 @@ window.CATALOG = {
             "j57u1b.png",
             "fxink6.png",
             "d088ku.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-40-11-14"
         },
         {
           number: 41,
@@ -515,7 +541,8 @@ window.CATALOG = {
             "v3xs1y.png",
             "j6yg5e.png",
             "o963rp.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-41-11-14"
         },
         {
           number: 42,
@@ -526,7 +553,8 @@ window.CATALOG = {
             "l1ynl3.png",
             "349syr.png",
             "afhr2a.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-42-11-14"
         },
         {
           number: 43,
@@ -537,7 +565,8 @@ window.CATALOG = {
             "jv9vm9.png",
             "vwxixl.png",
             "u1uxde.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-43-11-14"
         },
         {
           number: 44,
@@ -548,7 +577,8 @@ window.CATALOG = {
             "4z6qqu.png",
             "dasuh1.png",
             "6sb9oa.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-44-11-14"
         },
         {
           number: 45,
@@ -560,9 +590,11 @@ window.CATALOG = {
             "pages/klub-naboru-vahy/45/mwflsvsu1xmi-003.png",
             "pages/klub-naboru-vahy/45/mwflsvsu1xmi-004.png",
             "pages/klub-naboru-vahy/45/mwflsvsu1xmi-005.png"
-          ]
+          ],
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Spokusa-11-14"
         }
-      ]
+      ],
+      telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Zmіst-10-27-2"
     },
     {
       id: "extremely-straightforward-boyfriend-x-girlfriend",
@@ -596,10 +628,6 @@ window.CATALOG = {
       description: "Хлопець прямо зізнається дівчині, що його вабять пишні форми, — і вона із запалом береться набирати вагу, а він її годує. Романтична комедія про пару, яка дуже відверто говорить про свої бажання.\n\nПереклад українською: marko для @jyrok_fetysh.",
       added: "2026-07-25",
       links: [
-        {
-          label: "Telegraph",
-          url: "https://telegra.ph/Extremely-Straightforward-Boyfriend-X-Girlfriend--Nadzvichajno-Pryamol%D1%96n%D1%96jn%D1%96-Hlopec-Ta-D%D1%96vchina-by-Dr-Black-Jackdebuiscool-07-25"
-        },
         {
           label: "Telegram-канал",
           url: "https://t.me/jyrok_fetysh"
@@ -665,7 +693,6 @@ window.CATALOG = {
         }
       ],
       cover: "pages/waifu-quest/cover-mvwvv95d199m.jpg",
-      telegraphUrl: "https://telegra.ph/Waifu-Quest--Zmіst-11-08",
       telegraphManaged: true
     }
   ]
