@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -19,13 +19,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  telegraph:
+    if: github.event_name == 'workflow_dispatch' || contains(toJSON(github.event.commits), 'data/catalog.js') || contains(toJSON(github.event.commits), 'pages/')
+    runs-on: ubuntu-latest
+    outputs:
+      commit: ${{ steps.result.outputs.commit }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Publish managed Telegraph pages
+        env:
+          TELEGRAPH_ACCESS_TOKEN: ${{ secrets.TELEGRAPH_ACCESS_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: node tools/publish-telegraph.mjs
+      - name: Save Telegraph page URLs
+        run: |
+          if git diff --quiet -- data/catalog.js; then
+            echo "No new Telegraph URLs to save."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/catalog.js
+            git commit -m "Save Telegraph page URLs [skip ci]"
+            git push
+          fi
+      - id: result
+        run: echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
   deploy:
+    needs: telegraph
+    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.telegraph.outputs.commit || github.sha }}
       - uses: actions/setup-node@v5
         with:
           node-version: 22
