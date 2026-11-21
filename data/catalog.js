@@ -105,7 +105,8 @@ window.CATALOG = {
             "r3zqd9.png",
             "npyqtq.png",
             "6w51bj.png"
-          ]
+          ],
+          title: "Клуб Набору Ваги"
         },
         {
           number: 2,
@@ -117,7 +118,8 @@ window.CATALOG = {
             "d8dfi1.png",
             "xmq175.png",
             "muz1vd.png"
-          ]
+          ],
+          title: "Кінець Дієти"
         },
         {
           number: 3,
@@ -128,7 +130,8 @@ window.CATALOG = {
             "72evip.png",
             "9lcshg.png",
             "mawb58.png"
-          ]
+          ],
+          title: "День Відпочинку"
         },
         {
           number: 4,
@@ -138,7 +141,8 @@ window.CATALOG = {
             "38ye47.png",
             "myzaim.png",
             "2r861w.png"
-          ]
+          ],
+          title: "Магічний Корсет Частина 1"
         },
         {
           number: 5,
@@ -149,7 +153,8 @@ window.CATALOG = {
             "mul8zu.png",
             "wf4sw6.png",
             "ldl2e3.png"
-          ]
+          ],
+          title: "Магічний Корсет Частина 2"
         },
         {
           number: 6,
@@ -160,7 +165,8 @@ window.CATALOG = {
             "4pait4.png",
             "9uip8q.png",
             "tj2cai.png"
-          ]
+          ],
+          title: "Біта Знову Худне"
         },
         {
           number: 7,
@@ -170,7 +176,8 @@ window.CATALOG = {
             "v14eh1.png",
             "noiojg.png",
             "x3ds8m.png"
-          ]
+          ],
+          title: "Доставка"
         },
         {
           number: 8,
@@ -181,7 +188,8 @@ window.CATALOG = {
             "54mmyq.png",
             "q2mk0z.png",
             "jmfao7.png"
-          ]
+          ],
+          title: "Калорії"
         },
         {
           number: 9,
@@ -191,7 +199,8 @@ window.CATALOG = {
             "l8g1kt.png",
             "qtk7xr.png",
             "jg1ihq.png"
-          ]
+          ],
+          title: "Біта 02"
         },
         {
           number: 10,
@@ -202,7 +211,8 @@ window.CATALOG = {
             "uzc4c0.png",
             "60b10p.png",
             "l0aier.png"
-          ]
+          ],
+          title: "Я Не Товста"
         },
         {
           number: 11,
@@ -212,7 +222,8 @@ window.CATALOG = {
             "5keql8.png",
             "m874y3.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-11-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-11-11-14",
+          title: "Повернення Жирку"
         },
         {
           number: 12,
@@ -222,7 +233,8 @@ window.CATALOG = {
             "20kc9e.png",
             "a30wcv.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-12-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-12-11-14",
+          title: "Дієта Починається З Понеділка"
         },
         {
           number: 13,
@@ -232,7 +244,8 @@ window.CATALOG = {
             "lq38za.png",
             "ivjv75.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-13-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-13-11-14",
+          title: "Великий Розмір"
         },
         {
           number: 14,
@@ -243,7 +256,8 @@ window.CATALOG = {
             "cppniu.png",
             "p3d480.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-14-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-14-11-14",
+          title: "Капітан Ніла"
         },
         {
           number: 15,
@@ -253,7 +267,8 @@ window.CATALOG = {
             "4tmsyp.png",
             "yjs5b9.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-15-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-15-11-14",
+          title: "Реабілітація"
         },
         {
           number: 16,
@@ -264,7 +279,8 @@ window.CATALOG = {
             "alq77m.png",
             "hxjp20.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-16-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-16-11-14",
+          title: "Новий Купальник"
         },
         {
           number: 17,
@@ -275,7 +291,8 @@ window.CATALOG = {
             "y4f5p1.png",
             "nr76hv.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-17-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-17-11-14",
+          title: "Товсті Іменини"
         },
         {
           number: 18,
@@ -286,7 +303,8 @@ window.CATALOG = {
             "wyza7s.png",
             "g98467.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-18-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-18-11-14",
+          title: "Королева Пундиків"
         },
         {
           number: 19,
@@ -296,7 +314,8 @@ window.CATALOG = {
             "b2wdaz.png",
             "mdob5g.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-19-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-19-11-14",
+          title: "Розтяжки"
         },
         {
           number: 20,
@@ -306,7 +325,8 @@ window.CATALOG = {
             "0w8tgb.png",
             "nlep35.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-20-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-20-11-14",
+          title: "Розділ"
         },
         {
           number: 21,
@@ -315,7 +335,8 @@ window.CATALOG = {
             "uiqk02.png",
             "o865ax.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-21-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-21-11-14",
+          title: "Палійка Калорій"
         },
         {
           number: 22,
@@ -326,7 +347,8 @@ window.CATALOG = {
             "y958r2.png",
             "pegcua.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-22-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-22-11-14",
+          title: "Невинна"
         },
         {
           number: 23,
@@ -336,7 +358,8 @@ window.CATALOG = {
             "gr6vns.png",
             "glqoq2.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-23-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-23-11-14",
+          title: "Сестри"
         },
         {
           number: 24,
@@ -347,7 +370,8 @@ window.CATALOG = {
             "d5gpyq.png",
             "nyc93f.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-24-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-24-11-14",
+          title: "Метаболізм"
         },
         {
           number: 25,
@@ -357,7 +381,8 @@ window.CATALOG = {
             "etio5c.png",
             "q2b8u5.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-25-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-25-11-14",
+          title: "Пікнік"
         },
         {
           number: 26,
@@ -368,7 +393,8 @@ window.CATALOG = {
             "dv96x2.png",
             "3lq8l9.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-26-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-26-11-14",
+          title: "Чірі & Роксолана"
         },
         {
           number: 27,
@@ -379,7 +405,8 @@ window.CATALOG = {
             "72hvj0.png",
             "3eklew.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-27-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-27-11-14",
+          title: "Царівна Ожиріння"
         },
         {
           number: 28,
@@ -391,7 +418,8 @@ window.CATALOG = {
             "ksj54e.png",
             "q927t1.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-28-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-28-11-14",
+          title: "Жиро-жуйка Миттєва"
         },
         {
           number: 29,
@@ -402,7 +430,8 @@ window.CATALOG = {
             "g6ptk7.png",
             "xon7f8.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-29-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-29-11-14",
+          title: "Клуб Набору Ваги"
         },
         {
           number: 30,
@@ -415,7 +444,8 @@ window.CATALOG = {
             "oxgzm1.png",
             "8o50ij.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-30-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-30-11-14",
+          title: "Вчителька Фіз-ри"
         },
         {
           number: 31,
@@ -427,7 +457,8 @@ window.CATALOG = {
             "tebdg3.png",
             "4d6vr0.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-31-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-31-11-14",
+          title: "Раміна"
         },
         {
           number: 32,
@@ -439,7 +470,8 @@ window.CATALOG = {
             "gsaqt0.png",
             "fesqti.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-32-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-32-11-14",
+          title: "Роксана"
         },
         {
           number: 33,
@@ -450,7 +482,8 @@ window.CATALOG = {
             "h3clqw.png",
             "uafll6.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-33-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-33-11-14",
+          title: "Чарівний Знежирювач"
         },
         {
           number: 34,
@@ -461,7 +494,8 @@ window.CATALOG = {
             "tkc4vo.png",
             "w77sap.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-34-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-34-11-14",
+          title: "Луна"
         },
         {
           number: 35,
@@ -472,7 +506,8 @@ window.CATALOG = {
             "0gm6u7.png",
             "4sbyq8.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-35-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-35-11-14",
+          title: "Біта Проти Луни"
         },
         {
           number: 36,
@@ -483,7 +518,8 @@ window.CATALOG = {
             "qhgdrf.png",
             "nth6k8.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-36-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-36-11-14",
+          title: "Фідер"
         },
         {
           number: 37,
@@ -495,7 +531,8 @@ window.CATALOG = {
             "ttj123.png",
             "btho6r.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-37-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-37-11-14",
+          title: "Бочки"
         },
         {
           number: 38,
@@ -507,7 +544,8 @@ window.CATALOG = {
             "3btys6.png",
             "uvrn7t.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-38-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-38-11-14",
+          title: "Залежність"
         },
         {
           number: 39,
@@ -520,7 +558,8 @@ window.CATALOG = {
             "wiga2x.png",
             "axv0o5.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-39-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-39-11-14",
+          title: "Втягування"
         },
         {
           number: 40,
@@ -531,7 +570,8 @@ window.CATALOG = {
             "fxink6.png",
             "d088ku.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-40-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-40-11-14",
+          title: "Сповідь"
         },
         {
           number: 41,
@@ -542,7 +582,8 @@ window.CATALOG = {
             "j6yg5e.png",
             "o963rp.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-41-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-41-11-14",
+          title: "Випирає"
         },
         {
           number: 42,
@@ -554,7 +595,8 @@ window.CATALOG = {
             "349syr.png",
             "afhr2a.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-42-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-42-11-14",
+          title: "Прогулянка!"
         },
         {
           number: 43,
@@ -566,19 +608,21 @@ window.CATALOG = {
             "vwxixl.png",
             "u1uxde.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-43-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-43-11-14",
+          title: "Повнолуння"
         },
         {
           number: 44,
           date: "2026-10-27",
           pages: [
             "hd8t00.png",
-            "3adz89.png",
-            "4z6qqu.png",
             "dasuh1.png",
-            "6sb9oa.png"
+            "6sb9oa.png",
+            "4z6qqu.png",
+            "3adz89.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-44-11-14"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-44-11-14",
+          title: "Знежирювач Закінчився"
         },
         {
           number: 45,
@@ -592,6 +636,17 @@ window.CATALOG = {
             "pages/klub-naboru-vahy/45/mwflsvsu1xmi-005.png"
           ],
           telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Spokusa-11-14"
+        },
+        {
+          number: 46,
+          title: "Вузький Одяг",
+          date: "2026-11-21",
+          pages: [
+            "pages/klub-naboru-vahy/46/mwqb1t9mns9i-001.png",
+            "pages/klub-naboru-vahy/46/mwqb1t9mns9i-002.png",
+            "pages/klub-naboru-vahy/46/mwqb1t9mns9i-003.png",
+            "pages/klub-naboru-vahy/46/mwqb1t9mns9i-004.png"
+          ]
         }
       ],
       telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Zmіst-10-27-2"
