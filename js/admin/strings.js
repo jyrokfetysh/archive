@@ -87,6 +87,8 @@ const S = {
   chapter: ['Episode', 'Епізод'],
   unpublished: ['not published', 'не опубліковано'],
   postHint: ['The link works for readers after you publish and the site updates.', 'Посилання запрацює для читачів після публікації та оновлення сайту.'],
+  telegramPost: ['Generate Telegram post', 'Згенерувати пост для Telegram'],
+  telegramTranslator: ['Translation and adaptation', 'Переклад та адаптація'],
 
   volume: ['Volume', 'Том'],
   customLabel: ['Custom label', 'Власна назва'],

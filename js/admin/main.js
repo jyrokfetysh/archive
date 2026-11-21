@@ -4,11 +4,10 @@ import { t, setLang, addStrings, relTime } from '../i18n.js';
 import { store } from '../store.js';
 import { resolveUrl, slugify, STATUSES, site as siteData } from '../data.js';
 import { extractPages } from '../views/builder.js';
-import { shareUrl } from '../components.js';
-import { encodeStartParam } from '../telegram.js';
 import { GitHub, GitHubError, validRepo } from './github.js';
 import { parseCatalogSource, serializeCatalog } from './catalog-io.js';
 import { mergeCatalog, diffCatalog, looksLikeCatalog } from './merge.js';
+import { telegramPostText } from './telegram-post.js';
 import * as kc from './crypto.js';
 import STRINGS from './strings.js';
 
@@ -678,6 +677,9 @@ function viewSeries(id) {
         ${telegraphUrl
           ? html`<a class="btn btn-ghost btn-sm" href="${telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('a.telegraphLabel')}</span></a>`
           : html`<span class="badge badge-soft">${t('a.telegraphPending')}</span>`}
+        ${v.type === 'oneshot'
+          ? html`<button class="btn btn-ghost btn-sm" type="button" data-telegram-post>${icon('telegram')}<span>${t('a.telegramPost')}</span></button>`
+          : ''}
       </div>` : ''}
     </div>
     <form class="adm-grid" data-form novalidate>
@@ -693,6 +695,7 @@ function viewSeries(id) {
           <label class="field"><span class="field-label">${t('series.author')}</span><input class="input" name="author" value="${v.author || ''}"></label>
           <label class="field"><span class="field-label">${t('series.artist')}</span><input class="input" name="artist" value="${v.artist || ''}"></label>
         </div>
+        <label class="field"><span class="field-label">${t('a.telegramTranslator')}</span><input class="input" name="telegramTranslator" value="${v.telegramTranslator || 'nothing_just_fdrsm'}" placeholder="nothing_just_fdrsm"></label>
         <div class="field-grid field-grid-3">
           <label class="field"><span class="field-label">${t('cat.type')}</span><select class="select" name="type">${TYPES.map((x) => opt(x, t(`type.${x}`), v.type))}</select></label>
           <label class="field"><span class="field-label">${t('cat.status')}</span><select class="select" name="status">${STATUSES.map((x) => opt(x, t(`status.${x}`), v.status))}</select></label>
@@ -790,6 +793,7 @@ function viewSeries(id) {
       cover: coverVal,
       author: form.author.value.trim(),
       artist: form.artist.value.trim(),
+      telegramTranslator: form.telegramTranslator.value.trim(),
       type: form.type.value,
       status: form.status.value,
       year: form.year.value.trim(),
@@ -810,7 +814,7 @@ function viewSeries(id) {
     } else {
       const i = S.catalog.series.indexOf(cur);
       S.catalog.series[i] = { ...cur, ...out };
-      for (const k of Object.keys(cur)) if (!(k in out) && ['altTitles', 'cover', 'author', 'artist', 'year', 'readingMode', 'tags', 'description', 'links'].includes(k)) delete S.catalog.series[i][k];
+      for (const k of Object.keys(cur)) if (!(k in out) && ['altTitles', 'cover', 'author', 'artist', 'telegramTranslator', 'year', 'readingMode', 'tags', 'description', 'links'].includes(k)) delete S.catalog.series[i][k];
       changed(t('a.chEditSeries', { title }));
       toast(t('a.saved'));
       viewSeries(newId);
@@ -819,6 +823,10 @@ function viewSeries(id) {
 
   $('[data-delete]', root)?.addEventListener('click', () => deleteSeries(v), { signal });
   if (!isNew) renderChapterList(root, v, signal);
+  $('[data-telegram-post]', root)?.addEventListener('click', () => {
+    const chapter = v.chapters.find((x) => chId(x));
+    if (chapter) showPost(v, chapter);
+  }, { signal });
 }
 
 function renderChapterList(root, s, signal) {
@@ -843,11 +851,15 @@ function renderChapterList(root, s, signal) {
 
 function showPost(s, c) {
   const site = S.catalog.site || {};
-  const url = shareUrl({ id: sid(s) }, { id: chId(c) });
-  const app = site.telegramApp && encodeStartParam(sid(s), chId(c));
-  const text = [`📖 ${s.title} — ${chLabel(c)}${c.title ? `: ${c.title}` : ''}`, '', `${t('tg.read')}: ${url}`];
-  if (app) text.push(`${t('tg.readApp')}: ${site.telegramApp}?startapp=${app}`);
-  const post = text.join('\n');
+  const base = site.url
+    ? site.url
+    : `${location.origin}${location.pathname.replace(/[^/]*$/, '')}`;
+  const post = telegramPostText({
+    series: { ...s, id: sid(s) },
+    chapter: { ...c, id: chId(c) },
+    siteUrl: base,
+    language: S.catalog.site?.language || document.documentElement.lang,
+  });
   const sheet = openSheet({
     title: t('b.tgTitle'),
     body: html`<pre class="code code-wrap">${post}</pre><p class="field-hint">${t('a.postHint')}</p>
@@ -929,6 +941,9 @@ function viewChapter(seriesId, cid) {
         ${!isNew && v.telegraphUrl
           ? html`<a class="btn btn-ghost btn-sm" href="${v.telegraphUrl}" target="_blank" rel="noopener">${icon('external')}<span>${t('a.telegraphLabel')}</span></a>`
           : !isNew ? html`<span class="badge badge-soft">${t('a.telegraphPending')}</span>` : ''}
+        ${!isNew && s.type === 'comic'
+          ? html`<button class="btn btn-ghost btn-sm" type="button" data-telegram-post>${icon('telegram')}<span>${t('a.telegramPost')}</span></button>`
+          : ''}
       </div>
     </div>
     <form class="adm-form-wide" data-form novalidate>
@@ -970,6 +985,19 @@ function viewChapter(seriesId, cid) {
   const form = $('[data-form]', root);
   const grid = $('[data-grid]', root);
   let dragFrom = null;
+
+  $('[data-telegram-post]', root)?.addEventListener('click', () => {
+    if (isNew) return;
+    const numRaw = form.number.value.trim().replace(',', '.');
+    const draft = {
+      ...v,
+      number: numRaw && Number.isFinite(Number(numRaw)) ? Number(numRaw) : v.number,
+      title: form.title.value.trim() || undefined,
+      name: form.name.value.trim() || undefined,
+      pages: [...pages],
+    };
+    showPost(s, draft);
+  }, { signal });
 
   const render = () => {
     $('[data-n]', root).textContent = pages.length;
