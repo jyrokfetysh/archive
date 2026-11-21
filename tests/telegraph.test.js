@@ -90,6 +90,10 @@ test('includes the episode number with its title in Telegraph page and contents 
   const nodes = contents.content();
   assert.deepEqual(nodes[1].children[0].children[0].children, ['Епізод 45 - Спокуса']);
   assert.equal(nodes[1].children[0].attrs.href, 'https://telegra.ph/episode-45');
+  assert.deepEqual(nodes[2], {
+    tag: 'img',
+    attrs: { src: 'https://files.catbox.moe/episode-45.jpg' },
+  });
 });
 
 test('reuses old Telegraph links as managed page URLs and removes duplicate links', () => {
@@ -120,6 +124,10 @@ test('creates chapter pages before a contents page and stores returned URLs', ()
   chapter.saveUrl('https://telegra.ph/episode');
   const nodes = contents.content();
   assert.equal(nodes[1].children[0].attrs.href, 'https://telegra.ph/episode');
+  assert.deepEqual(nodes[2], {
+    tag: 'img',
+    attrs: { src: 'https://files.catbox.moe/page.jpg' },
+  });
   contents.saveUrl('https://telegra.ph/contents');
   assert.equal(catalog.series[0].telegraphUrl, 'https://telegra.ph/contents');
   assert.equal(catalog.series[0].chapters[0].telegraphUrl, 'https://telegra.ph/episode');

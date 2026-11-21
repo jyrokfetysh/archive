@@ -105,14 +105,17 @@ export function telegraphPlan(catalog, base) {
       url: series.telegraphUrl || '',
       content: () => [
         { tag: 'h3', children: [{ tag: 'b', children: [{ tag: 'text', children: [language === 'uk' ? 'Зміст' : 'Contents'] }] }] },
-        ...chapterUrls.map(({ label, chapter }) => ({
-          tag: 'p',
-          children: [{
-            tag: 'a',
-            attrs: { href: chapter.telegraphUrl || '' },
-            children: [{ tag: 'text', children: [label] }],
-          }],
-        })),
+        ...chapterUrls.flatMap(({ label, chapter }) => [
+          {
+            tag: 'p',
+            children: [{
+              tag: 'a',
+              attrs: { href: chapter.telegraphUrl || '' },
+              children: [{ tag: 'text', children: [label] }],
+            }],
+          },
+          { tag: 'img', attrs: { src: resolveImageUrl(chapter.pages[0], base) } },
+        ]),
       ],
       saveUrl: (url) => { series.telegraphUrl = url; },
     });
