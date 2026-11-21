@@ -647,7 +647,8 @@ window.CATALOG = {
             "pages/klub-naboru-vahy/46/mwqb1t9mns9i-003.png",
             "pages/klub-naboru-vahy/46/mwqb1t9mns9i-004.png"
           ],
-          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-46---Vuzkij-Odyag-11-21"
+          telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Epіzod-46---Vuzkij-Odyag-11-21",
+          releaseAt: "2026-11-21T15:25:00.000Z"
         }
       ],
       telegraphUrl: "https://telegra.ph/Klub-Naboru-Vagi--Zmіst-10-27-2"
