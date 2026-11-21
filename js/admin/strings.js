@@ -74,6 +74,8 @@ const S = {
   coverUrl: ['Image link or catbox name', 'Посилання або назва файлу catbox'],
   coverUpload: ['Upload image', 'Завантажити зображення'],
   coverHint: ['Empty = the first page of the first episode. Portrait images (2:3) look best.', 'Порожньо = перша сторінка першого епізоду. Найкраще виглядають вертикальні зображення (2:3).'],
+  releaseAt: ['Available after', 'Доступно після'],
+  releaseAtHint: ['Leave empty to publish immediately. Use local date and time.', 'Залиште порожнім для негайної публікації. Використовуйте місцеву дату й час.'],
   create: ['Create series', 'Створити тайтл'],
   created: ['Series created — now add episodes', 'Тайтл створено — тепер додайте епізоди'],
   saveChanges: ['Save', 'Зберегти'],

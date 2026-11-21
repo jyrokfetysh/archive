@@ -53,6 +53,10 @@ const toDate = (d) => {
   const ms = typeof d === 'number' ? d : Date.parse(d);
   return Number.isNaN(ms) ? 0 : ms;
 };
+const released = (value) => {
+  const at = toDate(value);
+  return !at || at <= Date.now();
+};
 const list = (v) => (Array.isArray(v) ? v : v ? [v] : []).map(String).map((x) => x.trim()).filter(Boolean);
 
 const MODE_ALIASES = { vertical: 'vertical', webtoon: 'vertical', longstrip: 'vertical', ltr: 'ltr', paged: 'ltr', comic: 'ltr', rtl: 'rtl', manga: 'rtl' };
@@ -68,6 +72,7 @@ const problems = [];
 
 (RAW.series || []).forEach((s, i) => {
   if (!s || !s.title) return problems.push(`series #${i + 1} has no "title" and was skipped`);
+  if (!released(s.releaseAt)) return;
   let id = String(s.id || slugify(s.title));
   if (byId.has(id)) {
     problems.push(`duplicate series id "${id}"`);
@@ -78,6 +83,7 @@ const problems = [];
   const seen = new Set();
   (s.chapters || []).forEach((c, j) => {
     if (!c) return;
+    if (!released(c.releaseAt)) return;
     const number = toNum(c.number);
     let cid = String(c.id ?? (number != null ? number : j + 1));
     if (seen.has(cid)) {
@@ -96,6 +102,7 @@ const problems = [];
       volume: toNum(c.volume) ?? (c.volume ? String(c.volume) : null),
       title: c.title ? String(c.title) : '',
       date: toDate(c.date),
+      releaseAt: c.releaseAt ? String(c.releaseAt) : '',
       pages,
       order: j,
     });

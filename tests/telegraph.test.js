@@ -111,6 +111,28 @@ test('reuses old Telegraph links as managed page URLs and removes duplicate link
   assert.deepEqual(catalog.series[0].links, [{ label: 'Source', url: 'https://example.com' }]);
 });
 
+test('does not plan scheduled series or episodes for Telegraph', () => {
+  const catalog = {
+    series: [{
+      title: 'Future comic',
+      type: 'comic',
+      releaseAt: '2099-01-01T00:00:00Z',
+      chapters: [{ number: 1, pages: ['future.jpg'] }],
+    }, {
+      title: 'Scheduled episode',
+      type: 'comic',
+      chapters: [
+        { number: 1, pages: ['live.jpg'] },
+        { number: 2, releaseAt: '2099-01-01T00:00:00Z', pages: ['future.jpg'] },
+      ],
+    }],
+  };
+  const plans = telegraphPlan(catalog, 'https://reader.example/');
+  assert.equal(plans.filter((plan) => plan.title.includes('Future comic')).length, 0);
+  assert.equal(plans.filter((plan) => plan.title.includes('Episode 2') || plan.title.includes('Епізод 2')).length, 0);
+  assert.equal(plans.some((plan) => plan.title.includes('Episode 1')), true);
+});
+
 test('creates chapter pages before a contents page and stores returned URLs', () => {
   const catalog = {
     series: [{

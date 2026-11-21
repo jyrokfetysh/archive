@@ -7,6 +7,11 @@ import { parseCatalogSource, serializeCatalog } from '../js/admin/catalog-io.js'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalogPath = path.join(root, 'data/catalog.js');
 const telegraPhApi = 'https://api.telegra.ph';
+const released = (value, now = Date.now()) => {
+  if (!value) return true;
+  const at = Date.parse(value);
+  return Number.isNaN(at) || at <= now;
+};
 
 const labelOf = (chapter, index, language) => {
   const episode = chapter.name
@@ -66,21 +71,25 @@ function pagePath(url) {
 
 export function telegraphPlan(catalog, base) {
   const plans = [];
+  const now = Date.now();
   for (const series of catalog.series || []) {
+    if (!released(series.releaseAt, now)) continue;
     const chapters = Array.isArray(series.chapters) ? series.chapters : [];
     const language = catalog.site?.language;
     if (!chapters.length) continue;
 
     if (series.type === 'oneshot') {
-      const chapterWithUrl = chapters.find((chapter) => chapter.telegraphUrl);
-      const target = chapterWithUrl || chapters[0];
+      const releasedChapters = chapters.filter((chapter) => released(chapter.releaseAt, now));
+      if (!releasedChapters.length) continue;
+      const chapterWithUrl = releasedChapters.find((chapter) => chapter.telegraphUrl);
+      const target = chapterWithUrl || releasedChapters[0];
       const url = target.telegraphUrl || series.telegraphUrl || legacyTelegraphUrl(series);
       delete series.telegraphUrl;
       removeLegacyTelegraphLinks(series);
       plans.push({
         title: series.title,
         url,
-        content: imageNodes(chapters, base),
+        content: imageNodes(releasedChapters, base),
         saveUrl: (url) => { target.telegraphUrl = url; },
       });
       continue;
@@ -90,6 +99,7 @@ export function telegraphPlan(catalog, base) {
     removeLegacyTelegraphLinks(series);
     const chapterUrls = [];
     chapters.forEach((chapter, index) => {
+      if (!released(chapter.releaseAt, now)) return;
       const label = labelOf(chapter, index, language);
       plans.push({
         title: `${series.title} — ${label}`,

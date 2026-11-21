@@ -56,6 +56,13 @@ let viewAc = null;
 const $ = (sel, root = app) => root.querySelector(sel);
 // The local date (toISOString() is UTC, which is still "yesterday" just after midnight in Kyiv).
 const today = () => { const d = new Date(); return new Date(d - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); };
+const toDateTimeLocal = (value) => {
+  if (!value) return '';
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return '';
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60_000).toISOString().slice(0, 16);
+};
+const fromDateTimeLocal = (value) => value ? new Date(value).toISOString() : '';
 const isPending = (p) => typeof p === 'string' && p.startsWith('pending:');
 const imgSrc = (p) => (isPending(p) ? S.previews.get(p) || '' : resolveUrl(p));
 const chId = (c) => String(c.id ?? c.number ?? '');
@@ -701,6 +708,9 @@ function viewSeries(id) {
           <label class="field"><span class="field-label">${t('cat.status')}</span><select class="select" name="status">${STATUSES.map((x) => opt(x, t(`status.${x}`), v.status))}</select></label>
           <label class="field"><span class="field-label">${t('series.year')}</span><input class="input" name="year" inputmode="numeric" value="${v.year || ''}" maxlength="4"></label>
         </div>
+        <label class="field"><span class="field-label">${t('a.releaseAt')}${v.type === 'oneshot' ? '' : ''}</span>
+          <input class="input" type="datetime-local" name="releaseAt" value="${toDateTimeLocal(v.releaseAt)}">
+          <span class="field-hint">${t('a.releaseAtHint')}</span></label>
         <label class="field"><span class="field-label">${t('mode.title')}</span>
           <select class="select" name="readingMode">${MODES.map((m) => opt(m, m ? t(`mode.${m}`) : t('a.modeAuto'), v.readingMode || ''))}</select></label>
         <label class="field"><span class="field-label">${t('cat.tags')}</span><input class="input" name="tags" value="${(v.tags || []).join(', ')}" list="adm-tags" autocomplete="off">
@@ -797,6 +807,7 @@ function viewSeries(id) {
       type: form.type.value,
       status: form.status.value,
       year: form.year.value.trim(),
+      releaseAt: fromDateTimeLocal(form.releaseAt.value),
       readingMode: form.readingMode.value,
       tags: form.tags.value.split(',').map((x) => x.trim()).filter(Boolean),
       description: form.description.value.trim(),
@@ -814,7 +825,7 @@ function viewSeries(id) {
     } else {
       const i = S.catalog.series.indexOf(cur);
       S.catalog.series[i] = { ...cur, ...out };
-      for (const k of Object.keys(cur)) if (!(k in out) && ['altTitles', 'cover', 'author', 'artist', 'telegramTranslator', 'year', 'readingMode', 'tags', 'description', 'links'].includes(k)) delete S.catalog.series[i][k];
+      for (const k of Object.keys(cur)) if (!(k in out) && ['altTitles', 'cover', 'author', 'artist', 'telegramTranslator', 'releaseAt', 'year', 'readingMode', 'tags', 'description', 'links'].includes(k)) delete S.catalog.series[i][k];
       changed(t('a.chEditSeries', { title }));
       toast(t('a.saved'));
       viewSeries(newId);
@@ -952,6 +963,7 @@ function viewChapter(seriesId, cid) {
           <label class="field"><span class="field-label">${t('b.number')} *</span><input class="input" name="number" inputmode="decimal" value="${v.number ?? ''}"></label>
           <label class="field"><span class="field-label">${t('a.volume')}</span><input class="input" name="volume" inputmode="numeric" value="${v.volume ?? ''}"></label>
           <label class="field"><span class="field-label">${t('b.date')}</span><input class="input" type="date" name="date" value="${v.date || today()}"></label>
+          <label class="field"><span class="field-label">${t('a.releaseAt')}</span><input class="input" type="datetime-local" name="releaseAt" value="${toDateTimeLocal(v.releaseAt)}"><span class="field-hint">${t('a.releaseAtHint')}</span></label>
         </div>
         <div class="field-grid">
           <label class="field"><span class="field-label">${t('b.chTitle')}</span><input class="input" name="title" value="${v.title || ''}"></label>
@@ -1114,7 +1126,8 @@ function viewChapter(seriesId, cid) {
     const { cs, cc } = now;
     // Start from the existing entry so fields this form doesn't know about (hand-written ones) survive.
     const out = { ...(cc || {}), number: numRaw ? Number(numRaw) : undefined, volume: form.volume.value.trim() || undefined,
-      title: form.title.value.trim() || undefined, name: name || undefined, date: form.date.value || today(), pages: [...pages] };
+      title: form.title.value.trim() || undefined, name: name || undefined, date: form.date.value || today(),
+      releaseAt: fromDateTimeLocal(form.releaseAt.value) || undefined, pages: [...pages] };
     if (!numRaw && out.id == null) out.id = slugify(name);
     const id = chId(out);
     if (cs.chapters.some((x) => x !== cc && chId(x) === id)) return toast(t('a.errChTaken'));
